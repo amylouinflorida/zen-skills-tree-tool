@@ -91,7 +91,15 @@ function renderTabs() {
 
   for (const [treeKey, treeDef] of Object.entries(rawConfig.SkillDefs)) {
     const btn = document.createElement("button");
-    btn.className = "tab-btn tree-" + treeKey + (treeKey === activeTreeKey ? " active" : "");
+  let classes = ["tab-btn", "tree-" + treeKey];
+
+if (treeKey === activeTreeKey) {
+  classes.push("active");
+} else if (treeHasPoints(treeKey)) {
+  classes.push("has-points");
+}
+
+btn.className = classes.join(" ");
 
     const displayName = resolveString(treeDef.DisplayName);
     const iconFile = iconMap[treeKey] || "";
@@ -122,6 +130,7 @@ function renderTree() {
   treeTitle.textContent = resolveString(treeDef.DisplayName);
   treeDescription.textContent = resolveString(treeDef.Description);
   treeGrid.innerHTML = "";
+  treeGrid.className = "tree tree-" + activeTreeKey;
 
   const rows = {
     1: ["1_1", "1_2", "1_3"],
@@ -187,6 +196,11 @@ function renderTree() {
       minusBtn.addEventListener("click", (event) => {
         event.stopPropagation();
         changePerkLevel(activeTreeKey, perkKey, -1);
+        buildState[treeKey][perkKey] = next;
+
+renderTabs();
+renderTree();
+renderOverallSummary();
       });
 
       const plusBtn = document.createElement("button");
@@ -602,7 +616,9 @@ Created by MagenShae * Graphics by Gio
     fallbackCopyText(text, btn, "Copy Build to Clipboard");
   }
 }
-
+function treeHasPoints(treeKey) {
+  return Object.values(buildState[treeKey]).some(level => level > 0);
+}
 function fallbackCopyText(text, btn, originalLabel = "Copy") {
   const textArea = document.createElement("textarea");
   textArea.value = text;

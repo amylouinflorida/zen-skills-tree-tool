@@ -267,7 +267,12 @@ h3 {
 .perk-card.locked {
     opacity: 0.4;
 }
-
+.perk-card.locked::after {
+    background: rgba(120,120,120,0.25);
+}
+.perk-card::after {
+    transition: background 0.2s ease;
+}
 .perk-name {
     font-weight: bold;
     margin-bottom: 6px;
@@ -370,6 +375,7 @@ h3 {
     border-color: #5258d6;
     box-shadow: 0 0 6px rgba(82,88,214,0.45);
 }
+
 /* =========================
    TOOLTIP
 ========================= */
@@ -497,7 +503,27 @@ h3 {
 .tab-btn.active.tree-crafting .tab-icon {
     filter: drop-shadow(0 0 10px #5258d6);
 }
+/* TREE WITH POINTS (NOT ACTIVE) */
 
+.tab-btn.tree-survival.has-points {
+  border-color: rgba(255,150,0,0.5);
+  box-shadow: 0 0 6px rgba(255,150,0,0.25);
+}
+
+.tab-btn.tree-hunting.has-points {
+  border-color: rgba(255,0,0,0.5);
+  box-shadow: 0 0 6px rgba(255,0,0,0.25);
+}
+
+.tab-btn.tree-gathering.has-points {
+  border-color: rgba(64,184,64,0.5);
+  box-shadow: 0 0 6px rgba(64,184,64,0.25);
+}
+
+.tab-btn.tree-crafting.has-points {
+  border-color: rgba(82,88,214,0.5);
+  box-shadow: 0 0 6px rgba(82,88,214,0.25);
+}
 /* =========================
    FOOTER / CREDITS
 ========================= */
@@ -538,4 +564,45 @@ h3 {
         gap: 12px 24px;
         text-align: center;
     }
+}
+#share-build-btn {
+  margin-top: 8px;
+  background: #2b2b2b;
+  border: 1px solid #444;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#share-build-btn:hover {
+  background: #3a3a3a;
+}
+/* base connector color */
+
+.tree .perk-card::after {
+    background: rgba(120,120,120,0.4);
+}
+/* survival connectors */
+
+.tree-survival .perk-card::after {
+    background: rgba(255,150,0,0.6);
+}
+
+/* hunting connectors */
+
+.tree-hunting .perk-card::after {
+    background: rgba(255,0,0,0.6);
+}
+
+/* gathering connectors */
+
+.tree-gathering .perk-card::after {
+    background: rgba(64,184,64,0.6);
+}
+
+/* crafting connectors */
+
+.tree-crafting .perk-card::after {
+    background: rgba(82,88,214,0.6);
 }
