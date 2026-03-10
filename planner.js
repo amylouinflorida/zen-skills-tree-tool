@@ -2,18 +2,21 @@ let rawConfig = null;
 let translations = {};
 let activeTreeKey = "survival";
 let buildState = {};
+
 const treeColors = {
   survival: "#ff9600",
   hunting: "#ff0000",
   gathering: "#40b840",
   crafting: "#5258d6"
 };
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     rawConfig = await loadSkillsConfig();
     translations = await loadTranslations();
 
     initializeBuildState(rawConfig);
+    loadBuildFromUrl();
     setupButtons();
     renderTabs();
     renderTree();
@@ -23,6 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.body.innerHTML = `<pre style="color:white;padding:20px;">Error loading planner files.\n\n${err}</pre>`;
   }
 });
+
 async function loadSkillsConfig() {
   const response = await fetch("./skills.json");
   if (!response.ok) throw new Error("Could not load skills.json");
@@ -88,6 +92,7 @@ function renderTabs() {
   for (const [treeKey, treeDef] of Object.entries(rawConfig.SkillDefs)) {
     const btn = document.createElement("button");
     btn.className = "tab-btn tree-" + treeKey + (treeKey === activeTreeKey ? " active" : "");
+
     const displayName = resolveString(treeDef.DisplayName);
     const iconFile = iconMap[treeKey] || "";
 
@@ -137,27 +142,29 @@ function renderTree() {
       const unlocked = isPerkUnlocked(activeTreeKey, perkKey);
       const rewardText = getRewardText(perkDef, level);
 
-     const card = document.createElement("div");
+      const card = document.createElement("div");
 
-let stateClass = "locked";
-if (level > 0) {
-  stateClass = "active";
-} else if (unlocked) {
-  stateClass = "available";
-}
-card.className = `perk-card tree-${activeTreeKey} ${stateClass}`;
-if (level > 0) {
-  const color = treeColors[activeTreeKey] || "#ffffff";
-  card.style.borderColor = color;
-  card.style.boxShadow = `0 0 6px ${color}`;
-}
+      let stateClass = "locked";
+      if (level > 0) {
+        stateClass = "active";
+      } else if (unlocked) {
+        stateClass = "available";
+      }
 
-     card.innerHTML = `
-  <div class="perk-status-icon"></div>
-  <div class="perk-name">${resolveString(perkDef.DisplayName)}</div>
-  <div class="perk-rank">Rank: ${level}/3</div>
-  <div class="perk-reward">Current: ${rewardText}</div>
-`;
+      card.className = `perk-card tree-${activeTreeKey} ${stateClass}`;
+
+      if (level > 0) {
+        const color = treeColors[activeTreeKey] || "#ffffff";
+        card.style.borderColor = color;
+        card.style.boxShadow = `0 0 5px ${color}66`;
+      }
+
+      card.innerHTML = `
+        <div class="perk-status-icon"></div>
+        <div class="perk-name">${resolveString(perkDef.DisplayName)}</div>
+        <div class="perk-rank">Rank: ${level}/3</div>
+        <div class="perk-reward">Current: ${rewardText}</div>
+      `;
 
       card.addEventListener("mouseenter", (event) => {
         showTooltip(perkDef, level, event);
@@ -362,12 +369,14 @@ function renderTreeSummary() {
 
   const ranksSpent = getTreeRanksSpent(activeTreeKey);
   const expRequired = ranksSpent * treeDef.EXP_Per_Perk;
-const treeHeader = document.createElement("div");
-treeHeader.className = "summary-item";
-treeHeader.textContent = resolveString(treeDef.DisplayName);
-treeHeader.style.color = treeColors[activeTreeKey] || "#ffffff";
-treeHeader.style.fontWeight = "bold";
-wrapper.appendChild(treeHeader);
+
+  const treeHeader = document.createElement("div");
+  treeHeader.className = "summary-item";
+  treeHeader.textContent = resolveString(treeDef.DisplayName);
+  treeHeader.style.color = treeColors[activeTreeKey] || "#ffffff";
+  treeHeader.style.fontWeight = "bold";
+  wrapper.appendChild(treeHeader);
+
   wrapper.appendChild(makeSummaryItem(`Ranks Invested: ${ranksSpent} / ${treeDef.MaxAllowedPerks}`));
   wrapper.appendChild(makeSummaryItem(`EXP Required: ${expRequired.toLocaleString()}`));
 
@@ -403,9 +412,9 @@ function renderOverallSummary() {
     if (spent <= 0) continue;
 
     const treeHeader = makeSummaryItem(`${treeName}: ${spent} ranks`);
-treeHeader.style.color = treeColors[treeKey] || "#ffffff";
-treeHeader.style.fontWeight = "bold";
-wrapper.appendChild(treeHeader);
+    treeHeader.style.color = treeColors[treeKey] || "#ffffff";
+    treeHeader.style.fontWeight = "bold";
+    wrapper.appendChild(treeHeader);
 
     for (const [perkKey, level] of Object.entries(buildState[treeKey])) {
       if (level <= 0) continue;
@@ -431,6 +440,7 @@ function makeSummaryItem(text) {
 function setupButtons() {
   const resetTreeBtn = document.getElementById("reset-tree-btn");
   const exportBtn = document.getElementById("export-build-btn");
+  const shareBtn = document.getElementById("share-build-btn");
 
   if (resetTreeBtn) {
     resetTreeBtn.addEventListener("click", () => {
@@ -441,6 +451,12 @@ function setupButtons() {
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
       exportBuild();
+    });
+  }
+
+  if (shareBtn) {
+    shareBtn.addEventListener("click", () => {
+      shareBuild();
     });
   }
 }
@@ -454,6 +470,87 @@ function resetActiveTree() {
 
   renderTree();
   renderOverallSummary();
+}
+
+function shareBuild() {
+  let parts = [];
+
+  for (const [treeKey, perks] of Object.entries(buildState)) {
+    let perkParts = [];
+
+    for (const [perkKey, level] of Object.entries(perks)) {
+      if (level > 0) {
+        perkParts.push(`${perkKey}=${level}`);
+      }
+    }
+
+    if (perkParts.length > 0) {
+      parts.push(`${treeKey}:${perkParts.join(",")}`);
+    }
+  }
+
+  const buildString = parts.join(";");
+  const url = `${window.location.origin}${window.location.pathname}?build=${buildString}`;
+
+  const btn = document.getElementById("share-build-btn");
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(() => {
+      if (btn) {
+        btn.textContent = "Link Copied!";
+        setTimeout(() => {
+          btn.textContent = "Share My Build";
+        }, 2000);
+      }
+    }).catch(() => {
+      fallbackCopyText(url, btn, "Share My Build");
+    });
+  } else {
+    fallbackCopyText(url, btn, "Share My Build");
+  }
+}
+
+function loadBuildFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const buildParam = params.get("build");
+
+  if (!buildParam) return;
+
+  let firstTreeWithPoints = null;
+
+  try {
+    const treeParts = buildParam.split(";");
+
+    for (const treePart of treeParts) {
+      const [treeKey, perksString] = treePart.split(":");
+      if (!treeKey || !perksString || !buildState[treeKey]) continue;
+
+      const perkParts = perksString.split(",");
+
+      for (const perkPart of perkParts) {
+        const [perkKey, levelStr] = perkPart.split("=");
+        const level = parseInt(levelStr, 10);
+
+        if (
+          perkKey &&
+          !isNaN(level) &&
+          buildState[treeKey][perkKey] !== undefined
+        ) {
+          buildState[treeKey][perkKey] = level;
+
+          if (level > 0 && !firstTreeWithPoints) {
+            firstTreeWithPoints = treeKey;
+          }
+        }
+      }
+    }
+
+    if (firstTreeWithPoints) {
+      activeTreeKey = firstTreeWithPoints;
+    }
+  } catch (err) {
+    console.warn("Could not load build from URL", err);
+  }
 }
 
 function exportBuild() {
@@ -499,14 +596,14 @@ Created by MagenShae * Graphics by Gio
         }, 2000);
       }
     }).catch(() => {
-      fallbackCopyText(text, btn);
+      fallbackCopyText(text, btn, "Copy Build to Clipboard");
     });
   } else {
-    fallbackCopyText(text, btn);
+    fallbackCopyText(text, btn, "Copy Build to Clipboard");
   }
 }
 
-function fallbackCopyText(text, btn) {
+function fallbackCopyText(text, btn, originalLabel = "Copy") {
   const textArea = document.createElement("textarea");
   textArea.value = text;
   textArea.style.position = "fixed";
@@ -519,14 +616,14 @@ function fallbackCopyText(text, btn) {
   try {
     document.execCommand("copy");
     if (btn) {
-      btn.textContent = "Build Copied!";
+      btn.textContent = btn.id === "share-build-btn" ? "Link Copied!" : "Build Copied!";
       setTimeout(() => {
-        btn.textContent = "Copy Build to Clipboard";
+        btn.textContent = originalLabel;
       }, 2000);
     }
   } catch (err) {
     console.error("Copy failed:", err);
-    alert("Could not copy build to clipboard.");
+    alert("Could not copy to clipboard.");
   }
 
   document.body.removeChild(textArea);
