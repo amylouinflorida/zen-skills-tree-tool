@@ -1,0 +1,509 @@
+{
+    "CONFIG_VERSION": "1",
+    "ServerConfig": {
+        "DebugJumpEXP": 500,
+        "AutoSaveTimerSecs": 900,
+        "BaseHandDrillKitSuccess": 0.4000000059604645,
+        "EnableAnalytics": 1,
+        "EnableDatabaseCache": 1,
+        "ShareExpRange": 0,
+        "ShareExpMulti": 0.5,
+        "I_AM_USING_MAPLINK": 0
+    },
+    "SharedConfig": {
+        "DebugMode": 0,
+        "ShowExpHudOnLeft": 0,
+        "AllowHighscores": 1,
+        "AllowResetPerks": 1,
+        "EXP_InjectorBoostMulti": 2.0,
+        "EXP_InjectorBoostTime": 1800.0,
+        "PercentOfExpLostOnDeath": 0.05000000074505806
+    },
+    "SkillDefs": {
+        "survival": {
+            "DisplayName": "#STR_ZenSkills_Name_Survival",
+            "Description": "#STR_ZenSkills_Desc_Survival",
+            "StartingEXP": 0,
+            "EXP_Per_Perk": 1000,
+            "EXP_Perk_Modifier": 0.009999999776482582,
+            "EXP_Refund_Modifier": 0.5,
+            "MaxAllowedPerks": 20,
+            "Perks": {
+                "4_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name9",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc9",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "4_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name10",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc10",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "3_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name6",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc6",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        20.0,
+                        40.0,
+                        60.0
+                    ]
+                },
+                "3_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name7",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc7",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        60.0,
+                        80.0,
+                        100.0
+                    ]
+                },
+                "3_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name8",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc8",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "2_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name4",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc4",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "2_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name5",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc5",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        15.0,
+                        20.0
+                    ]
+                },
+                "1_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name1",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc1",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "1_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name2",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc2",
+                    "RewardSymbol": "",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        1.0,
+                        2.0,
+                        3.0
+                    ]
+                },
+                "1_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Survival_Name3",
+                    "Description": "#STR_ZenSkills_Perk_Survival_Desc3",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                }
+            }
+        },
+        "hunting": {
+            "DisplayName": "#STR_ZenSkills_Name_Hunting",
+            "Description": "#STR_ZenSkills_Desc_Hunting",
+            "StartingEXP": 0,
+            "EXP_Per_Perk": 1000,
+            "EXP_Perk_Modifier": 0.009999999776482582,
+            "EXP_Refund_Modifier": 0.5,
+            "MaxAllowedPerks": 20,
+            "Perks": {
+                "4_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name9",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc9",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        20.0,
+                        40.0,
+                        60.0
+                    ]
+                },
+                "4_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name10",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc10",
+                    "RewardSymbol": "m",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        100.0,
+                        200.0,
+                        300.0
+                    ]
+                },
+                "3_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name6",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc6",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        20.0,
+                        40.0,
+                        60.0
+                    ]
+                },
+                "3_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name7",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc7",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "3_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name8",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc8",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "2_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name4",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc4",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "2_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name5",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc5",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "1_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name1",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc1",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "1_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name2",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc2",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "1_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name3",
+                    "Description": "#STR_ZenSkills_Perk_Hunting_Desc3",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                }
+            }
+        },
+        "gathering": {
+            "DisplayName": "#STR_ZenSkills_Name_Gathering",
+            "Description": "#STR_ZenSkills_Desc_Gathering",
+            "StartingEXP": 0,
+            "EXP_Per_Perk": 1000,
+            "EXP_Perk_Modifier": 0.009999999776482582,
+            "EXP_Refund_Modifier": 0.5,
+            "MaxAllowedPerks": 20,
+            "Perks": {
+                "4_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name9",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc9",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        25.0,
+                        50.0,
+                        90.0
+                    ]
+                },
+                "4_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name10",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc10",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        20.0,
+                        40.0,
+                        60.0
+                    ]
+                },
+                "3_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name6",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc6",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        20.0,
+                        40.0,
+                        60.0
+                    ]
+                },
+                "3_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name7",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc7",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "3_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name8",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc8",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "2_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name4",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc4",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        20.0,
+                        40.0,
+                        60.0
+                    ]
+                },
+                "2_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name5",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc5",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "1_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name1",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc1",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "1_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name2",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc2",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "1_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name3",
+                    "Description": "#STR_ZenSkills_Perk_Gathering_Desc3",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                }
+            }
+        },
+        "crafting": {
+            "DisplayName": "#STR_ZenSkills_Name_Crafting",
+            "Description": "#STR_ZenSkills_Desc_Crafting",
+            "StartingEXP": 0,
+            "EXP_Per_Perk": 1000,
+            "EXP_Perk_Modifier": 0.009999999776482582,
+            "EXP_Refund_Modifier": 0.5,
+            "MaxAllowedPerks": 20,
+            "Perks": {
+                "4_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name9",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc9",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "4_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name10",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc10",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "3_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name6",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc6",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "3_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name7",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc7",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "3_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name8",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc8",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "2_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name4",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc4",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "2_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name5",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc5",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "1_1": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name1",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc1",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        5.0,
+                        10.0,
+                        15.0
+                    ]
+                },
+                "1_2": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name2",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc2",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                },
+                "1_3": {
+                    "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name3",
+                    "Description": "#STR_ZenSkills_Perk_Crafting_Desc3",
+                    "RewardSymbol": "%",
+                    "MinPerksRequiredFromPrevTier": 1,
+                    "Rewards": [
+                        10.0,
+                        20.0,
+                        30.0
+                    ]
+                }
+            }
+        }
+    },
+    "Analytics_AvgTotalExpGainedPerSession": {}
+}

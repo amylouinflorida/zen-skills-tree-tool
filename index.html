@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zen Skills Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="page-shell">
+
+  <header class="top-header">
+    <div class="header-left">
+      <div class="banner">
+        <img src="assets/banner.png" alt="Zen Skills Planner">
+      </div>
+
+      <div class="totals-bar">
+        <span id="total-ranks">Ranks Spent: 0</span>
+        <span id="total-exp">EXP Required: 0</span>
+      </div>
+
+      <nav class="tabs" id="tabs"></nav>
+    </div>
+
+    <div class="header-right"></div>
+  </header>
+
+  <main class="layout">
+    <section class="tree-panel">
+
+      <div class="tree-header">
+        <h2 id="tree-title">Loading...</h2>
+
+        <button id="reset-tree-btn" class="reset-btn" title="Reset all ranks in this skill tree">
+          <img src="assets/reset-icon.png" alt="Reset Tree">
+        </button>
+      </div>
+
+  <p id="tree-description" class="tree-description"></p>
+
+  <div id="tree-grid" class="tree"></div>
+
+</section>
+
+      <aside class="summary-panel">
+        <div class="summary-box">
+          <h3>Current Tree Summary</h3>
+          <div id="tree-summary"></div>
+        </div>
+
+        <div class="summary-box">
+          <h3>Overall Build Summary</h3>
+          <div id="overall-summary"></div>
+
+          <div class="export-box">
+            <button id="export-build-btn">Copy Build to Clipboard</button>
+          </div>
+        </div>
+
+        <div class="credit-box">
+          Created by <span class="credit-name">MagenShae</span><br>
+          Graphics by <span class="credit-name">Gio</span>
+        </div>
+      </aside>
+    </main>
+
+  </div>
+
+  <div id="perk-tooltip" class="perk-tooltip"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="planner.js"></script>
+</body>
+</html>
