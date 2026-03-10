@@ -73,5 +73,47 @@
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script src="planner.js"></script>
+
+  <button id="help-btn">?</button>
+
+<div id="help-overlay" class="help-overlay">
+  <div class="help-modal">
+
+    <h2>DayZRP Zen Skills Planner Guide</h2>
+    <br>
+
+    <p><strong>Select a Skill Tree</strong><br>
+    Use the icons at the top to switch between Survival, Hunting, Gathering, and Crafting.</p>
+
+    <p><strong>Add or Remove Perk Ranks</strong><br>
+    Use the + and - buttons on each perk card to invest ranks.</p>
+
+    <p><strong>Unlock Higher Tiers</strong><br>
+    Investing ranks in earlier tiers unlocks higher tiers.</p>
+
+    <p><strong>Perk Card States</strong><br>
+Perks appear in different visual states depending on their availability:
+<br><br>
+<strong>Dimmed</strong> – The perk is locked and cannot be selected yet.<br>
+<strong>Normal</strong> – The perk is available and can be upgraded.<br>
+<strong>Highlighted</strong> – The perk currently has ranks invested in it.
+</p>
+
+    <p><strong>Highlighted Skill Tree Tabs</strong><br>
+Skill trees that have points invested will display a faint colored highlight around their tab.</p>
+
+    <p><strong>Track Your Build</strong><br>
+    The panels on the right show ranks invested and EXP required.</p>
+
+    <p><strong>Copy Build to Clipboard</strong><br>
+    Copies a readable version of your build for sharing.</p>
+
+    <p><strong>Share My Build</strong><br>
+    Generates a link that loads your exact build when opened.</p>
+
+    <button id="close-help">Close</button>
+
+  </div>
+</div>
 </body>
 </html>

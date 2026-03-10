@@ -644,3 +644,30 @@ function fallbackCopyText(text, btn, originalLabel = "Copy") {
 
   document.body.removeChild(textArea);
 }
+document.addEventListener("DOMContentLoaded", () => {
+
+  const helpBtn = document.getElementById("help-btn");
+  const helpOverlay = document.getElementById("help-overlay");
+  const closeHelp = document.getElementById("close-help");
+
+  if (helpBtn) {
+    helpBtn.addEventListener("click", () => {
+      helpOverlay.style.display = "flex";
+    });
+  }
+
+  if (closeHelp) {
+    closeHelp.addEventListener("click", () => {
+      helpOverlay.style.display = "none";
+    });
+  }
+
+  if (helpOverlay) {
+    helpOverlay.addEventListener("click", (e) => {
+      if (e.target === helpOverlay) {
+        helpOverlay.style.display = "none";
+      }
+    });
+  }
+
+});
