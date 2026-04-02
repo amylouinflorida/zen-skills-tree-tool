@@ -1,19 +1,79 @@
 let rawConfig = null;
 let translations = {};
+
 let activeTreeKey = "survival";
 let buildState = {};
+let currentLanguage = "english";
+const languageLabels = {
+  english: "English",
+  german: "German",
+  russian: "Russian",
+  spanish: "Spanish",
+  french: "French",
+  italian: "Italian",
+  polish: "Polish",
+  czech: "Czech",
 
+  chinesesimp: "Chinese (Simplified)",
+  chinesetrad: "Chinese (Traditional)",
+
+  japanese: "Japanese",
+  korean: "Korean",
+
+  latam: "Spanish (Latin America)",
+  ptbr: "Portuguese (Brazil)"
+};
 const treeColors = {
   survival: "#ff9600",
   hunting: "#ff0000",
   gathering: "#40b840",
   crafting: "#5258d6"
 };
-
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     rawConfig = await loadSkillsConfig();
     translations = await loadTranslations();
+    const langSelect = document.getElementById("language-select");
+   if (langSelect) {
+  langSelect.innerHTML = "";
+
+availableLanguages.forEach(lang => {
+  const option = document.createElement("option");
+  option.value = lang;
+
+  option.textContent =
+    languageLabels[lang.toLowerCase()] ||
+    lang.charAt(0).toUpperCase() + lang.slice(1);
+
+  langSelect.appendChild(option);
+});
+
+  langSelect.value = currentLanguage;
+
+  langSelect.addEventListener("change", () => {
+    currentLanguage = langSelect.value;
+
+    renderTabs();
+    renderTree();
+    renderOverallSummary();
+  });
+}
+
+if (langSelect) {
+  langSelect.value = currentLanguage;
+
+  langSelect.addEventListener("change", () => {
+    currentLanguage = langSelect.value;
+const headers = parsed.meta.fields || [];
+
+availableLanguages = headers
+  .filter(col => col !== "Key" && col !== "Language")
+  .map(col => col.toLowerCase());
+    renderTabs();
+    renderTree();
+    renderOverallSummary();
+  });
+}
 
     initializeBuildState(rawConfig);
     loadBuildFromUrl();
@@ -33,6 +93,8 @@ async function loadSkillsConfig() {
   return await response.json();
 }
 
+let availableLanguages = [];
+
 async function loadTranslations() {
   const response = await fetch("./stringtable.csv");
   if (!response.ok) throw new Error("Could not load stringtable.csv");
@@ -44,14 +106,25 @@ async function loadTranslations() {
     skipEmptyLines: true
   });
 
+  // ✅ THIS IS STEP A
+  const headers = parsed.meta.fields || [];
+
+  availableLanguages = headers
+    .filter(col => col !== "Key" && col !== "Language")
+    .map(col => col.toLowerCase());
+
   const map = {};
 
   for (const row of parsed.data) {
-    const key = (row.Language || "").trim();
-    const english = (row.english || "").trim();
+    const key = (row.Key || row.Language || "").trim();
+    if (!key) continue;
 
-    if (key) {
-      map[key] = english || key;
+    map[key] = {};
+
+    for (const [col, value] of Object.entries(row)) {
+      if (col === "Key" || col === "Language") continue;
+
+      map[key][col.toLowerCase()] = (value || "").trim();
     }
   }
 
@@ -73,7 +146,11 @@ function resolveString(str) {
   if (!str.startsWith("#")) return str;
 
   const key = str.replace(/^#/, "");
-  return translations[key] || key;
+  const entry = translations[key];
+
+  if (!entry) return key;
+
+  return entry[currentLanguage] || entry["english"] || key;
 }
 
 function renderTabs() {

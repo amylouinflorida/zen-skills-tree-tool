@@ -27,7 +27,7 @@
             "EXP_Per_Perk": 1000,
             "EXP_Perk_Modifier": 0.009999999776482582,
             "EXP_Refund_Modifier": 0.5,
-            "MaxAllowedPerks": 20,
+            "MaxAllowedPerks": 30,
             "Perks": {
                 "4_1": {
                     "DisplayName": "#STR_ZenSkills_Perk_Survival_Name9",
@@ -148,7 +148,7 @@
             "EXP_Per_Perk": 1000,
             "EXP_Perk_Modifier": 0.009999999776482582,
             "EXP_Refund_Modifier": 0.5,
-            "MaxAllowedPerks": 20,
+            "MaxAllowedPerks": 30,
             "Perks": {
                 "4_1": {
                     "DisplayName": "#STR_ZenSkills_Perk_Hunting_Name9",
@@ -156,9 +156,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
-                        20.0,
-                        40.0,
-                        60.0
+                        5.0,
+                        10.0,
+                        20.0
                     ]
                 },
                 "4_2": {
@@ -178,9 +178,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
+                        10.0,
                         20.0,
-                        40.0,
-                        60.0
+                        40.0
                     ]
                 },
                 "3_2": {
@@ -269,7 +269,7 @@
             "EXP_Per_Perk": 1000,
             "EXP_Perk_Modifier": 0.009999999776482582,
             "EXP_Refund_Modifier": 0.5,
-            "MaxAllowedPerks": 20,
+            "MaxAllowedPerks": 30,
             "Perks": {
                 "4_1": {
                     "DisplayName": "#STR_ZenSkills_Perk_Gathering_Name9",
@@ -277,9 +277,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
-                        25.0,
-                        50.0,
-                        90.0
+                        15.0,
+                        30.0,
+                        50.0
                     ]
                 },
                 "4_2": {
@@ -288,9 +288,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
-                        20.0,
-                        40.0,
-                        60.0
+                        15.0,
+                        30.0,
+                        50.0
                     ]
                 },
                 "3_1": {
@@ -299,9 +299,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
+                        10.0,
                         20.0,
-                        40.0,
-                        60.0
+                        30.0
                     ]
                 },
                 "3_2": {
@@ -332,9 +332,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
+                        10.0,
                         20.0,
-                        40.0,
-                        60.0
+                        30.0
                     ]
                 },
                 "2_2": {
@@ -365,9 +365,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
+                        5.0,
                         10.0,
-                        20.0,
-                        30.0
+                        25.0
                     ]
                 },
                 "1_3": {
@@ -390,7 +390,7 @@
             "EXP_Per_Perk": 1000,
             "EXP_Perk_Modifier": 0.009999999776482582,
             "EXP_Refund_Modifier": 0.5,
-            "MaxAllowedPerks": 20,
+            "MaxAllowedPerks": 30,
             "Perks": {
                 "4_1": {
                     "DisplayName": "#STR_ZenSkills_Perk_Crafting_Name9",
@@ -398,9 +398,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
+                        5.0,
                         10.0,
-                        20.0,
-                        30.0
+                        25.0
                     ]
                 },
                 "4_2": {
@@ -409,9 +409,9 @@
                     "RewardSymbol": "%",
                     "MinPerksRequiredFromPrevTier": 1,
                     "Rewards": [
+                        5.0,
                         10.0,
-                        20.0,
-                        30.0
+                        25.0
                     ]
                 },
                 "3_1": {
