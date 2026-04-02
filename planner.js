@@ -440,7 +440,7 @@ function updateTopTotals() {
   const totalExpEl = document.getElementById("total-exp");
 
   if (totalRanksEl) {
-    totalRanksEl.textContent = `Ranks Spent: ${getTotalRanksSpent()}`;
+    totalRanksEl.textContent = `Skill Points Spent: ${getTotalRanksSpent()}`;
   }
 
   if (totalExpEl) {
@@ -468,7 +468,7 @@ function renderTreeSummary() {
   treeHeader.style.fontWeight = "bold";
   wrapper.appendChild(treeHeader);
 
-  wrapper.appendChild(makeSummaryItem(`Ranks Invested: ${ranksSpent} / ${treeDef.MaxAllowedPerks}`));
+  wrapper.appendChild(makeSummaryItem(`Skill Points Invested: ${ranksSpent} / ${treeDef.MaxAllowedPerks}`));
   wrapper.appendChild(makeSummaryItem(`EXP Required: ${expRequired.toLocaleString()}`));
 
   for (const [perkKey, level] of Object.entries(buildState[activeTreeKey])) {
@@ -493,7 +493,7 @@ function renderOverallSummary() {
   const wrapper = document.createElement("div");
   wrapper.className = "summary-list";
 
-  wrapper.appendChild(makeSummaryItem(`Total Ranks Spent: ${getTotalRanksSpent()}`));
+  wrapper.appendChild(makeSummaryItem(`Total Skill Points Spent: ${getTotalRanksSpent()}`));
   wrapper.appendChild(makeSummaryItem(`Total EXP Required: ${getTotalExpRequired().toLocaleString()}`));
 
   for (const [treeKey, treeDef] of Object.entries(rawConfig.SkillDefs)) {
@@ -673,7 +673,7 @@ Created by MagenShae * Graphics by Gio
     }
   }
 
-  text += `Total Ranks Spent: ${getTotalRanksSpent()}\n`;
+  text += `Total Skill Points Spent: ${getTotalRanksSpent()}\n`;
   text += `Total EXP Required: ${getTotalExpRequired().toLocaleString()}`;
 
   const btn = document.getElementById("export-build-btn");
