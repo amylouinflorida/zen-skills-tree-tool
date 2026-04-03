@@ -379,20 +379,19 @@ function isPerkUnlocked(treeKey, perkKey) {
   const tier = Number(perkKey.split("_")[0]);
   if (tier === 1) return true;
 
-  const perkDef = rawConfig.SkillDefs[treeKey].Perks[perkKey];
-  const required = perkDef.MinPerksRequiredFromPrevTier ?? 1;
   const prevTier = tier - 1;
 
-  let count = 0;
+  let pointsSpent = 0;
 
   for (const [key, level] of Object.entries(buildState[treeKey])) {
     const row = Number(key.split("_")[0]);
-    if (row === prevTier && level > 0) {
-      count += 1;
+
+    if (row === prevTier) {
+      pointsSpent += level; // ✅ THIS is the change
     }
   }
 
-  return count >= required;
+  return pointsSpent >= 2;
 }
 
 function getRewardText(perkDef, level) {
